@@ -2,7 +2,7 @@ import React from "react";
 import Card from './card';
 import GetData from "../component/data"
 import OwlCarousel from 'react-owl-carousel';
-import { useNavigate   } from 'react-router-dom';
+import { useNavigate, useLocation  } from 'react-router-dom';
 
 
 
@@ -10,6 +10,7 @@ function Category_section( props ) {
 
 
   let navigate = useNavigate();
+  let location = useLocation();
   const data = GetData(props.type, props.category, props.items ? props.items : null)
   const [category_data, setcategory_data] = React.useState(GetData(props.type, props.category));
 
@@ -27,7 +28,7 @@ function Category_section( props ) {
     return (
     
       <section className="w-full py-10">
-        <h1 className="text-center text-4xl font-semibold">{props.category}</h1>
+        <h1 className="text-center text-4xl font-semibold">{location.pathname.substring(0,8) != '/product' ? props.category : 'Others from ' + props.category}</h1>
         <p className="text-center mb-10">{props.desc}</p>
         { data.length > 0 ?
         <OwlCarousel className='owl-theme' loop margin={10} items={5} nav>

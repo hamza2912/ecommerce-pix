@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect} from 'react'
 import { useCart } from 'react-use-cart';
 import Cart from './cart';
 import GetData from "../component/data"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { set } from 'firebase/database';
 
 
@@ -16,6 +16,8 @@ const Navbar = () => {
   
 
   let navigate = useNavigate();
+  const location = useLocation();
+  console.log(location.pathname);
 
   const useIsMount = () => {
     const isMountRef = useRef(true);
@@ -39,15 +41,16 @@ const Navbar = () => {
   function handleSearch(event) {
     var value = event.target.value
     setsearch(value);
-    setresults(data.filter( product => product.title.startsWith(value)))
+    setresults(data.filter( product => product.title.toLowerCase().startsWith(value.toLowerCase())))
   }
     
 
     return (
         <>
-        {showCart ? 
+        {showCart && location.pathname != '/checkout' ? 
            <Cart showCart={showCart} setshowCart={setshowCart}  /> : null 
         }
+        {location.pathname != '/admin_portal' ? 
         <header>
           <div className='flex bg-mate py-2'>
             <p className='font-roboto text-white mx-auto font-semibold no-underline mb-0'>FREE Shipping for orders over Rs.1499</p>
@@ -80,7 +83,7 @@ const Navbar = () => {
                   <i class="fas fa-shopping-cart relative cursor-pointer" onClick={()=> setshowCart(true)}><p >{totalUniqueItems}</p></i>
               </div>
           </div> 
-        </header>
+        </header> : null}
         </>
     )
 }

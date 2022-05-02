@@ -11,6 +11,7 @@ import Product from './pages/product';
 import Category from './pages/category';
 import CheckOut from './pages/checkout';
 import Thankyou from './pages/thankyou';
+import Admin_portal from './pages/admin_portal';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path='/categories:id' element={<Category/>} />
           <Route path='/checkout' element={<CheckOut/>} />
           <Route path='/thankyou' element={<Thankyou/>} />
+          <Route path='/admin_portal' element={<Admin_portal/>} />
       </Routes>
     </CartProvider>      
 

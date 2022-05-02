@@ -31,8 +31,39 @@ a{
  
  }
 
+ .dimmer
+{
+    background:#000;
+    opacity:0.5;
+    position:fixed; /* important to use fixed, not absolute */
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:10; /* may not be necessary */
+}
+
+.w-orders{
+    width: 70rem;
+}
+
+.messageBox {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+ .ui.table thead th{
+     font-weight: 600 !important;
+ }
+
 .font-roboto{
     font-family: 'Roboto Mono', monospace;
+}
+
+.text-vs{
+    font-size: 9px;
 }
 
 .fadeRight {

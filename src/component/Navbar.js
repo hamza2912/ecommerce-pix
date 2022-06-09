@@ -53,20 +53,20 @@ const Navbar = () => {
         {location.pathname != '/admin_portal' ? 
         <header>
           <div className='flex bg-mate py-2'>
-            <p className='font-roboto text-white mx-auto font-semibold no-underline mb-0'>FREE Shipping for orders over Rs.1499</p>
+            <p className='font-roboto text-white lg:text-base text-sm mx-auto font-semibold no-underline mb-0'>FREE Shipping for orders over Rs.1499</p>
           </div>
-          <div className='bg-gray-100 py-3 px-32 flex justify-between items-center'>
-              <div className="w-2/3 flex">
+          <div className='bg-gray-100 py-3 lg:px-32 px-5 flex justify-between items-center'>
+              <div className="lg:w-2/3 w-4/5 flex">
                   <div className="w-1/5">
-                      <a onClick={()=>navigate('/')}><img className='w-3/5' src="./images/logo1.png"  alt="logo" /></a>
+                      <a onClick={()=>navigate('/')}><img className='w-3/5 lg:pt-0 pt-3' src="./images/logo1.png"  alt="logo" /></a>
                   </div>
-                  <div className='w-4/5 flex mt-1 -ml-5 relative'>
+                  <div className='lg:w-4/5 w-full flex mt-1 lg:-ml-5 -ml-2 relative'>
                       <input value={search} onChange={(event)=>handleSearch(event)} className='w-full h-10 rounded-l-md border-none outline-none pl-3' type ="search" />
                       <div className='w-10 h-10 bg-gray-800 rounded-r-md flex justify-center items-center cursor-pointer'>
                         <i class="text-white fas fa-search"></i>
                       </div>
                       { search != '' ?
-                        <ul className='absolute w-full top-10 shadow-lg bg-white'>
+                        <ul className='absolute w-full top-10 shadow-lg bg-white z-10'>
                           { results.map(product => {
                           return (
                           <li onClick={()=>{navigate(`product:${product.id}`); setsearch('')}} className='shadow-sm w-full py-3 px-2 cursor-pointer'>

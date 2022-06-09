@@ -37,9 +37,9 @@ const Product = ()=>{
  
   return (
     <section className='container py-10'>
-      <div class="flex font-sans w-4/5 mx-auto rounded-lg shadow-lg mb-10">
-        <div class="flex-none w-56 relative">
-          <img src={data ? data.img : null} alt="" class="absolute inset-0 w-full h-full object-cover rounded-l-lg" />
+      <div class="flex lg:flex-row flex-col font-sans w-4/5 mx-auto rounded-lg shadow-lg mb-10">
+        <div class="flex-none lg:w-56 w-full relative">
+          <img src={data ? data.img : null} alt="" class="lg:absolute inset-0 w-full h-full object-cover lg:rounded-l-lg" />
         </div>
         <div class="flex-auto p-6">
           <div class="flex justify-between">
@@ -55,7 +55,7 @@ const Product = ()=>{
             In stock
           </div>
           <div class="flex flex-col items-baseline mt-4 mb-6 pb-6 border-b border-slate-200">
-            <div class="space-x-2 flex text-sm">
+            <div class="space-x-2 flex flex-wrap text-sm">
               <label onClick={()=>setsize('xs')} className={ size == 'xs' ? "w-9 h-9 rounded-lg flex items-center justify-center font-semibold bg-slate-900 text-white cursor-pointer" : "w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 cursor-pointer"}>
                 XS
               </label>
@@ -72,7 +72,7 @@ const Product = ()=>{
                 XL
               </label>
             </div>
-            <div class="space-x-2 flex text-sm mt-4">
+            <div class="space-x-2 flex flex-wrap text-sm mt-4">
               <label onClick={()=>setcolor('red')} className={ color == 'red' ? "w-auto px-4 h-9 rounded-lg flex items-center justify-center font-semibold bg-slate-900 text-white cursor-pointer" : "w-auto px-4 h-9 rounded-lg flex items-center justify-center text-slate-700 cursor-pointer"}>
                 Red
               </label>
@@ -88,11 +88,11 @@ const Product = ()=>{
             </div>
           </div>
           <div class="flex space-x-4 mb-6 text-sm font-medium">
-            <div class="flex-auto flex space-x-4">
+            <div class="flex-auto flex lg:flex-row flex-col lg:space-x-4">
               <button onClick={()=> addItem(data)} className="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900">
                 Add to Cart
               </button>
-              <button onClick={()=> {addItem(data); navigate('/checkout');}} className="h-10 px-6 font-semibold rounded-md bg-black text-white">
+              <button onClick={()=> {addItem(data); navigate('/checkout');}} className="h-10 px-6 font-semibold rounded-md bg-black text-white mt-3 lg:mt-0">
                 Buy now
               </button>
             </div>

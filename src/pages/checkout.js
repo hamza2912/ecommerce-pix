@@ -94,15 +94,15 @@ const CheckOut = () => {
 
   
   return (
-    <section className='container'>
-      <div className='grid grid-cols-2 gap-4'>
+    <section className='container my-10'>
+      <div className='grid lg:grid-cols-2 grid-cols-1 gap-4'>
         <div className='w-full'>
-          <h1 className='text-2xl mt-10'>Order Details</h1>
+          <h1 className='text-2xl'>Order Details</h1>
           <div className='mt-2 p-5 bg-gray-100'>
             <div className="w-full">
                 <p>Total Items: <span className='font-semibold'>{totalItems}</span></p>
                 <p>Unique Items: <span className='font-semibold'>{totalUniqueItems}</span></p>
-                <ul className='flex flex-col w-4/5 pl-0 mt-2 overflow-y-auto max-h-32'>
+                <ul className='flex flex-col lg:w-4/5 w-full pl-0 mt-2 overflow-y-auto lg:max-h-32 max-h-40'>
                     {items.map((item, index) => {
                         return(
                             <li className='grid grid-cols-4 gap-2 bg-white rounded-md p-2 mt-2 fadeIn'>
@@ -127,7 +127,7 @@ const CheckOut = () => {
                     })}
                 </ul> 
             </div>
-          <div className='w-full grid grid-cols-3 pt-3 pb-2'>
+          <div className='w-full grid lg:grid-cols-3 grid-cols-2 pt-3 pb-2'>
               <div>
                   <p className='text-sm mb-0'>Product Charges: </p>
                   <p className='text-sm mb-0'>Shipping Charges: </p>
@@ -144,7 +144,7 @@ const CheckOut = () => {
           </div>
         </div>
         <div className='w-full'>
-          <h1 className='text-2xl mt-10'>User Details</h1>
+          <h1 className='text-2xl mt-4 lg:mt-0'>User Details</h1>
           <div className='mt-2 p-5 bg-gray-100 grid grid-cols-2 gap-4 outline-none'>
               <input value={user_details.firstname} onChange={event => {
                                 setuser_details(prevState => ({

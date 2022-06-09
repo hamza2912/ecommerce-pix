@@ -10,7 +10,7 @@ const Cart = ({ showCart, setshowCart }) => {
     const { isEmpty, totalUniqueItems, items, totalItems, cartTotal, updateItemQuantity, removeItem, emptyCart } = useCart();
     
     return (
-        <section className='fixed p-10 w-1/3 bg-white h-screen right-0 top-0 z-10 fadeRight'>
+        <section className='fixed p-10 lg:w-1/3 w-full bg-white h-screen right-0 top-0 z-10 fadeRight'>
             { !isEmpty ?
             <div className='row justify-content-center'>
                 <div className="col-12">
@@ -41,7 +41,7 @@ const Cart = ({ showCart, setshowCart }) => {
                         })}
                     </ul> 
                 </div>
-                <div className='w-full grid grid-cols-3 absolute bottom-5 px-5 py-3 bg-gray-100'>
+                <div className='w-full grid grid-cols-3 absolute bottom-5 left-0 lg:px-10 px-5 py-3 bg-gray-100'>
                     <div>
                         <p className='text-sm mb-0'>Product Charges: </p>
                         <p className='text-sm mb-0'>Shipping Charges: </p>

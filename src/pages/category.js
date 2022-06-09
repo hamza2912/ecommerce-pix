@@ -13,15 +13,15 @@ const Category = ()=>{
 
     console.log(id);
     const db = getDatabase();
-    const categoryDetails = ref(db, `categories/${id.substring(1)}`);
+    const categoryDetails = ref(db, `categories/`);
     onValue(categoryDetails, (snapshot) => {
-        setcategory(snapshot.val());
+        setcategory(snapshot.val().filter(x=>x.id == id.substring(1))[0]);
     });
   }, []);
  
   return (
     <section className="container">
-      <Category_section type='category' category={category.name} items={10} desc={category.desc} category_id={category.id} />
+      <Category_section type='category' category={category ? category.name : ''} items={10} desc={category ? category.desc : ''} category_id={category ? category.id : 0} />
     </section>
   )
 }

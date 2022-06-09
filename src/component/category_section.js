@@ -23,6 +23,27 @@ function Category_section( props ) {
   }, []);
 
 
+    const responsive = {
+        0: {
+            items: 2,
+        },
+        400: {
+            items: 2,
+        },
+        600: {
+            items: 2,
+        },
+        700: {
+            items: 3,
+        },
+        1000: {
+            items: 5,
+
+        }
+    }
+
+
+
   if(props.type == "home" ){
 
     return (
@@ -31,7 +52,7 @@ function Category_section( props ) {
         <h1 className="text-center text-4xl font-semibold">{location.pathname.substring(0,8) != '/product' ? props.category : 'Others from ' + props.category}</h1>
         <p className="text-center mb-10">{props.desc}</p>
         { data.length > 0 ?
-        <OwlCarousel className='owl-theme' loop margin={10} items={5} nav>
+        <OwlCarousel className='owl-theme' loop margin={10} items={5} nav responsive={responsive}>
          {data.map((item, index)=>{
             return(
               <div class="item">
@@ -55,7 +76,7 @@ function Category_section( props ) {
         <h1 className="text-center text-4xl font-semibold">{props.category}</h1>
         <p className="text-center mb-10">{props.desc}</p>
         { data.length > 0 ?
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid lg:grid-cols-5 grid-cols-2 gap-4">
           {data.map((item, index)=>{
             return(
               <Card item={item} key={index}/>

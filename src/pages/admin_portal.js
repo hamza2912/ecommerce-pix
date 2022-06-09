@@ -29,7 +29,6 @@ function Admin_portal() {
                 setcategory_id(result[(result.length-1)].id.substring(1));
             });
         }
-
         if (manage == 'orders') {
             const orders = ref(db, 'orders/orders');
             onValue(orders, (snapshot) => {
@@ -190,7 +189,7 @@ function Admin_portal() {
   return (
    
     <section className="flex">
-        <div className="sidebar w-64 h-screen bg-gray-800 flex flex-col py-5">
+        <div className="sidebar fixed lg:relative lg:w-64 w-24 h-screen bg-gray-800 flex flex-col py-5">
             <div className="w-full">
                 {/* <img src="" alt="" /> */}
                 <p className="text-white text-center">Company Logo</p>
@@ -202,12 +201,12 @@ function Admin_portal() {
             </ul>
         </div>
         { manage == 'products' ?
-        <div className="p-10 w-full">
+        <div className="lg:p-10 lg:ml-0 ml-24 px-5 py-10 w-full">
             <div className="w-full flex justify-between">
                 <h1 className="text-xl">Products</h1>
                 <button onClick={()=>{setshowModal(true)}} className="bg-gray-800 px-3 py-2 text-sm text-white font-semibold">Add a Product</button>
             </div>
-            <div className="h-96 overflow-y-scroll mt-5">
+            <div className="lg:h-96 overflow-y-scroll mt-5">
                 <table class="ui single line table w-full text-sm">
                     <thead>
                         <tr>
@@ -229,7 +228,7 @@ function Admin_portal() {
                                 <td>{product.id}</td>
                                 <td>{product.title}</td>
                                 <td>{product.category}</td>
-                                <td>{product.description}</td>
+                                <td><p className="lg:w-auto w-48 overflow-x-auto overflow-y-hidden">{product.description}</p></td>
                                 <td>{product.price}</td>
                                 <td>{product.ratings}</td>
                                 <td><button onClick={()=>editProduct(product.id)} className="text-xs p-2 bg-green-400 text-white">Edit</button></td>
@@ -245,7 +244,7 @@ function Admin_portal() {
             showModal ?    
                 <div>
                     <div className='dimmer'></div>
-                    <div className='messageBox w-1/3 bg-white h-auto z-10 fadein'>
+                    <div className='messageBox lg:w-1/3 w-4/5 bg-white h-auto z-10 fadein'>
                         <div className='w-full h-2 hero-text'></div>
                         <div className='w-4/5 flex flex-col items-center mx-auto pt-8 pb-10'>
                             <p className='text-2xl'>Add a product!</p>
@@ -298,12 +297,12 @@ function Admin_portal() {
           }
             
         </div> : manage == 'categories' ?
-        <div className="p-10 w-full">
+        <div className="lg:p-10 lg:ml-0 ml-24 px-5 py-10 w-full">
             <div className="w-full flex justify-between">
                 <h1 className="text-xl">Categories</h1>
                 <button onClick={()=>{setshowModal(true)}} className="bg-gray-800 px-3 py-2 text-sm text-white font-semibold">Add a Category</button>
             </div>
-            <div className="h-96 overflow-y-scroll mt-5">
+            <div className="lg:h-96 h-auto overflow-y-scroll mt-5">
                 <table class="ui single line table w-full text-sm">
                     <thead>
                         <tr>
@@ -321,7 +320,7 @@ function Admin_portal() {
                             <tr>
                                 <td>{category.id}</td>
                                 <td>{category.name}</td>
-                                <td>{category.desc}</td>
+                                <td><p className="lg:w-auto w-48 overflow-x-auto overflow-y-hidden">{category.desc}</p></td>
                                 <td><button onClick={()=>editCategory(category.id)}  className="text-xs p-2 bg-green-400 text-white">Edit</button></td>
                                 <td><button onClick={()=>deleteCategory(category.id)} className="text-xs p-2 bg-red-400 text-white">Delete</button></td>
                             </tr>
@@ -335,7 +334,7 @@ function Admin_portal() {
             showModal ?    
                 <div>
                     <div className='dimmer'></div>
-                    <div className='messageBox w-1/3 bg-white h-auto z-10 fadein'>
+                    <div className='messageBox lg:w-1/3 w-4/5 bg-white h-auto z-10 fadein'>
                         <div className='w-full h-2 hero-text'></div>
                         <div className='w-4/5 flex flex-col items-center mx-auto pt-8 pb-10'>
                             <p className='text-2xl'>Add a category</p>
@@ -363,12 +362,12 @@ function Admin_portal() {
             }
             
         </div> :
-        <div className="p-10 w-full">
+        <div className="lg:p-10 lg:ml-0 ml-24 px-5 py-10 w-full">
             <div className="w-full flex justify-between">
                 <h1 className="text-xl">Orders</h1>
                 {/* <button onClick={()=>{setshowModal(true)}} className="bg-gray-800 px-3 py-2 text-sm text-white font-semibold">Add a Category</button> */}
             </div>
-            <div className="h-96  overflow-x-auto overflow-y-auto mt-5">
+            <div className="lg:h-96 h-auto overflow-x-auto overflow-y-auto mt-5">
                 <table class="ui single line table w-full text-sm">
                     <thead>
                         <tr>
@@ -416,7 +415,7 @@ function Admin_portal() {
             showModal ?    
                 <div>
                     <div className='dimmer'></div>
-                    <div className='messageBox w-1/3 bg-white h-auto z-10 fadein'>
+                    <div className='messageBox lg:w-1/3 w-4/5 bg-white h-auto z-10 fadein'>
                         <ul className='flex flex-col w-full p-5  mt-4 overflow-y-auto max-h-96'>
                             {order_items.map((item, index) => {
                                 return(
